@@ -18,7 +18,6 @@ const topratedtv = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
@@ -36,7 +35,6 @@ const onairtv = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
@@ -54,7 +52,6 @@ const populartv = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
@@ -72,7 +69,6 @@ const airingtv = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };

@@ -10,7 +10,6 @@ const Add = (item: any) => {
   storage
     .load({key: 'favorite'})
     .then(res => {
-      console.log('res', res);
       if (res) {
         list = [...res, item];
       }

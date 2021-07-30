@@ -18,7 +18,6 @@ const toprated = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
@@ -36,7 +35,6 @@ const upcoming = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
@@ -54,7 +52,6 @@ const popular = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
@@ -72,7 +69,6 @@ const nowplaying = async () => {
 
     return fetch.data;
   } else {
-    console.log(fetch);
     throw new Error('error');
   }
 };
