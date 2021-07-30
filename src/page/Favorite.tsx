@@ -1,6 +1,5 @@
 import React, {useEffect, useState, useCallback} from 'react';
 import {Text, View, FlatList, TouchableOpacity, Dimensions} from 'react-native';
-import Card from 'component/Card';
 import FastImage from 'react-native-fast-image';
 import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import Topbar from 'ui/Topbar';

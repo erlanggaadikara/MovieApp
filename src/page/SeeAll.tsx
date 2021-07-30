@@ -1,15 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import {
-  View,
-  Dimensions,
-  ScrollView,
-  Text,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Topbar from 'ui/Topbar';
-import Card from 'component/Card';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 

@@ -4,11 +4,9 @@ import {
   Dimensions,
   ScrollView,
   Text,
-  FlatList,
   TouchableOpacity,
 } from 'react-native';
 import {useRoute} from '@react-navigation/native';
-import Topbar from 'ui/Topbar';
 import Card from 'component/Card';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialIcons';
