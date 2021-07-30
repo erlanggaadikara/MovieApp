@@ -63,7 +63,12 @@ const HomeTV = () => {
       </View>
     );
   return (
-    <View style={{paddingBottom: 56, backgroundColor: 'black'}}>
+    <View
+      style={{
+        paddingBottom: 56,
+        backgroundColor: 'black',
+        minHeight: dim.height,
+      }}>
       <Topbar>
         <View></View>
         <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>

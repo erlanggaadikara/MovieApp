@@ -6,10 +6,13 @@ import {
   Text,
   RefreshControl,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import storage from 'storage/movie';
 import SubTopic from 'ui/SubTopic';
 import Topbar from './Topbar';
+import Drawer from 'route/Drawer';
+import {useNavigation, useRoute} from '@react-navigation/native';
 
 const HomeMovie = () => {
   const dim = Dimensions.get('window');
@@ -63,7 +66,12 @@ const HomeMovie = () => {
     );
 
   return (
-    <View style={{paddingBottom: 56, backgroundColor: 'black'}}>
+    <View
+      style={{
+        paddingBottom: 56,
+        backgroundColor: 'black',
+        minHeight: dim.height,
+      }}>
       <Topbar>
         <View></View>
         <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>

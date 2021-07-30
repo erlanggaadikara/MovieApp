@@ -13,6 +13,7 @@ import User from 'route/User';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
 import SplashScreen from 'react-native-splash-screen';
+import {SafeAreaView} from 'react-native';
 
 const App = () => {
   useEffect(() => {

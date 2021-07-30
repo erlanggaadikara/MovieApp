@@ -12,12 +12,32 @@ import Topbar from 'ui/Topbar';
 import Card from 'component/Card';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import EvilIcon from 'react-native-vector-icons/EvilIcons';
+import favorite from 'storage/favorite';
+import Toast from 'react-native-simple-toast';
 
 const Detail = () => {
   const dim = Dimensions.get('window');
   const route = useRoute();
   const {title, item}: any = route.params || {};
-  console.log(item);
+  const [isFav, setFav] = useState(false);
+
+  useEffect(() => {
+    const view = async () => {
+      const getFav = await favorite.storage.load({key: 'favorite'});
+      if (getFav) {
+        for (let x in getFav) {
+          if (item.id === getFav[x].id) {
+            setFav(true);
+            break;
+          }
+        }
+      }
+    };
+
+    view();
+  }, []);
+
   return (
     <ScrollView
       style={{
@@ -98,6 +118,24 @@ const Detail = () => {
                 </Text>
               </View>
             </View>
+            <TouchableOpacity
+              onPress={() => {
+                if (isFav) {
+                  favorite.Remove(item);
+                  setFav(false);
+                  Toast.show('remove from favorite');
+                } else {
+                  favorite.Add(item);
+                  setFav(true);
+                  Toast.show('Add to favorite');
+                }
+              }}>
+              <EvilIcon
+                name="heart"
+                color={isFav ? 'red' : 'white'}
+                size={30}
+              />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={{marginHorizontal: 20}}>
