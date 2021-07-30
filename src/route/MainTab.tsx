@@ -14,7 +14,7 @@ export default () => {
       backBehavior="initialRoute"
       tabBarOptions={{
         activeTintColor: 'white',
-        inactiveTintColor: '#BDBDBD',
+        inactiveTintColor: '#cccccc',
         style: {backgroundColor: 'black'},
       }}>
       <Tab.Screen

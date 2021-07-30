@@ -11,6 +11,7 @@ import {useNavigation, useRoute} from '@react-navigation/native';
 import Topbar from 'ui/Topbar';
 import Card from 'component/Card';
 import FastImage from 'react-native-fast-image';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const SeeAll = () => {
   const route = useRoute();
@@ -19,8 +20,8 @@ const SeeAll = () => {
   return (
     <View style={{backgroundColor: 'black'}}>
       <Topbar>
-        <TouchableOpacity>
-          <Text>Back</Text>
+        <TouchableOpacity onPress={() => nav.goBack()}>
+          <Icon name="arrow-back" size={20} />
         </TouchableOpacity>
         <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
           {title}

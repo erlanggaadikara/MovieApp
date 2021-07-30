@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Dimensions, ScrollView, Text, RefreshControl} from 'react-native';
+import {
+  View,
+  Dimensions,
+  ScrollView,
+  Text,
+  RefreshControl,
+  ActivityIndicator,
+} from 'react-native';
 import storage from 'storage/tv';
 import SubTopic from 'ui/SubTopic';
 import Topbar from './Topbar';
@@ -12,7 +19,8 @@ const HomeTV = () => {
     onair: [],
     airing: [],
   } as any);
-  const [load, setLoad] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [load, setLoad] = useState(true);
 
   const getlist = async () => {
     Promise.all([
@@ -29,30 +37,46 @@ const HomeTV = () => {
           airing: [...res[3].results],
         });
       })
-      .finally(() => setLoad(false));
+      .finally(() => setRefresh(false));
   };
 
   useEffect(() => {
     const fetchtv = async () => {
       await getlist();
+      setLoad(false);
     };
     fetchtv();
   }, []);
+
+  if (load)
+    return (
+      <View
+        style={{
+          width: dim.width,
+          height: dim.height,
+          backgroundColor: 'black',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <ActivityIndicator size="large" color="#fff" />
+      </View>
+    );
   return (
-    <View style={{paddingBottom: 56}}>
+    <View style={{paddingBottom: 56, backgroundColor: 'black'}}>
       <Topbar>
         <View></View>
         <Text style={{color: 'white', fontSize: 24, fontWeight: 'bold'}}>
-          Movie App
+          TV
         </Text>
         <View></View>
       </Topbar>
       <ScrollView
         refreshControl={
           <RefreshControl
-            refreshing={load}
+            refreshing={refresh}
             onRefresh={async () => {
-              setLoad(true);
+              setRefresh(true);
               await getlist();
             }}
           />
@@ -60,9 +84,9 @@ const HomeTV = () => {
         <View
           style={{
             flexDirection: 'column',
+            flexGrow: 1,
             width: dim.width,
             flex: 1,
-            backgroundColor: 'black',
           }}>
           <SubTopic title={'Top rated'} item={tv.toprated} />
           <SubTopic title={'Popular'} item={tv.popular} />

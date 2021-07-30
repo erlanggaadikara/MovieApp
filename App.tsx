@@ -8,20 +8,24 @@
  * @format
  */
 
-import React from 'react';
-import {SafeAreaView, useColorScheme, View, Text} from 'react-native';
-import SplashScreen from 'page/SplashScreen';
+import React, {useEffect} from 'react';
 import User from 'route/User';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
+import SplashScreen from 'react-native-splash-screen';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  useEffect(() => {
+    let ins = 0;
+    const interval = setInterval(() => {
+      if (ins >= 5) {
+        SplashScreen.hide();
+      }
+      ins += 1;
+    }, 1000);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <NavigationContainer>
